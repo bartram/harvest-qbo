@@ -1,0 +1,28 @@
+{
+  "name": "Harvest Invoice",
+  "description": "Fetch next invoice number from QuickBooks Online",
+  "version": "1.0",
+  "options_page": "index.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.harvestapp.com/invoices/new*"
+      ],
+      "js": [
+        "content.bundle.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "scripts": ["background.bundle.js"]
+  },
+  "web_accessible_resources": ["index.html"],
+  "content_security_policy": "script-src 'self' https://*.jquery.com https://*.intuit.com; object-src 'self'",
+  "permissions": [
+    "background",
+    "storage",
+    "https://*.intuit.com/*"
+  ],
+  "manifest_version": 2
+}
